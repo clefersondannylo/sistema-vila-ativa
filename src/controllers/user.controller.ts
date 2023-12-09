@@ -36,8 +36,7 @@ export const getId = async (req: Request, res: Response) => {
 };
 export const update = async (req: Request, res: Response) => {
   try {
-    const data = await userValidation.parse(req.body);
-    const user = await updateUser(Number(req.params.id), data);
+    const user = await updateUser(Number(req.params.id), req.body);
     return res.status(200).send(user);
   } catch (error) {
     return res.status(400).send(error);
