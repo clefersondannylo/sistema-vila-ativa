@@ -16,20 +16,3 @@ export const userValidation = z.object({
   deleted: z.boolean().default(false),
   isAdmin: z.boolean().optional(),
 });
-export const userValidationUpdate = z.object({
-  name: z.string().nullable().optional(),
-  email: z.string().email().nullable().optional(),
-  password: z.string().min(6).nullable().optional(),
-  phone: z.string().nullable().optional(),
-  work: z.string().nullable().optional(),
-  cpf: z.string().nullable().optional(),
-  address: z.string().nullable().optional(),
-  number: z.string().nullable().optional(),
-  city: z.string().nullable().optional(),
-  state: z.string().nullable().optional(),
-  cep: z.string().nullable().optional(),
-  // status: z.boolean().default(true),
-  // deleted: z.boolean().default(false),
-  // isAdmin: z.boolean().optional(),
-});
-

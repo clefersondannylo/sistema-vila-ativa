@@ -1,7 +1,7 @@
 import { User } from "../entities/user";
 import { prisma } from "../services/prisma";
 
-export const createUser = async (data: User) => {
+export async function createUser(data: User) {
   const user = await prisma.user.create({
     data,
     select: {
@@ -23,13 +23,13 @@ export const createUser = async (data: User) => {
     },
   });
   return user;
-};
+}
 
-export const getAll = async (
+export async function getAll(
   skip: number,
   take: number,
   search: string | null
-) => {
+) {
   if (!search) {
     const [users, total] = await prisma.$transaction([
       prisma.user.findMany({
@@ -163,9 +163,9 @@ export const getAll = async (
     const totalPage = Math.ceil(total / take);
     return { total, totalPage, users };
   }
-};
+}
 
-export const getById = async (id: number) => {
+export async function getById(id: number) {
   const user = await prisma.user.findUnique({
     where: {
       id,
@@ -189,14 +189,13 @@ export const getById = async (id: number) => {
     },
   });
   return user;
-};
+}
 
-export const updateUser = async (id: number, data: any) => {
+export async function updateUser(id: number, data: any) {
   const user = await prisma.user.update({
     where: {
       id,
     },
-    data,
     select: {
       id: true,
       name: true,
@@ -210,15 +209,16 @@ export const updateUser = async (id: number, data: any) => {
       cep: true,
       city: true,
       state: true,
-      status: false,
+      status: true,
       deleted: true,
       isAdmin: true,
     },
+    data,
   });
   return user;
-};
+}
 
-export const deleteUser = async (id: number) => {
+export async function deleteUser(id: number) {
   await prisma.user.update({
     where: { id },
     data: {
@@ -226,4 +226,4 @@ export const deleteUser = async (id: number) => {
     },
   });
   return;
-};
+}
