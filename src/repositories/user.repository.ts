@@ -10,6 +10,10 @@ export async function createUser(data: User) {
       email: false,
       password: false,
       cpf: false,
+      rg: false,
+      birthday: false,
+      spouse: false,
+      terrain: false,
       phone: false,
       work: false,
       address: false,
@@ -17,6 +21,7 @@ export async function createUser(data: User) {
       zip: false,
       city: false,
       state: false,
+      situation: false,
       status: false,
       deleted: false,
       isAdmin: false,
@@ -42,6 +47,10 @@ export async function getAll(
           email: true,
           password: false,
           cpf: true,
+          rg: true,
+          birthday: true,
+          spouse: true,
+          terrain: true,
           phone: true,
           work: true,
           address: true,
@@ -49,8 +58,9 @@ export async function getAll(
           zip: true,
           city: true,
           state: true,
+          situation: true,
           status: true,
-          deleted: true,
+          deleted: false,
           isAdmin: true,
         },
         skip,
@@ -86,6 +96,21 @@ export async function getAll(
               cpf: { search },
             },
             {
+              birthday: { search },
+            },
+            {
+              rg: { search },
+            },
+            {
+              spouse: { search },
+            },
+            {
+              terrain: { search },
+            },
+            {
+              street: { search },
+            },
+            {
               address: { search },
             },
             {
@@ -98,6 +123,9 @@ export async function getAll(
               state: { search },
             },
             {
+              situation: { search },
+            },
+            {
               zip: { search },
             },
           ],
@@ -108,6 +136,10 @@ export async function getAll(
           email: true,
           password: false,
           cpf: true,
+          rg: true,
+          birthday: true,
+          spouse: true,
+          terrain: true,
           phone: true,
           work: true,
           address: true,
@@ -115,6 +147,7 @@ export async function getAll(
           zip: true,
           city: true,
           state: true,
+          situation: true,
           status: true,
           deleted: false,
           isAdmin: true,
@@ -142,6 +175,21 @@ export async function getAll(
               cpf: { search },
             },
             {
+              rg: { search },
+            },
+            {
+              spouse: { search },
+            },
+            {
+              birthday: { search },
+            },
+            {
+              terrain: { search },
+            },
+            {
+              street: { search },
+            },
+            {
               address: { search },
             },
             {
@@ -152,6 +200,9 @@ export async function getAll(
             },
             {
               state: { search },
+            },
+            {
+              situation: { search },
             },
             {
               zip: { search },
@@ -176,6 +227,10 @@ export async function getById(id: number) {
       email: true,
       password: false,
       cpf: true,
+      rg: true,
+      birthday: true,
+      spouse: true,
+      terrain: true,
       phone: true,
       work: true,
       address: true,
@@ -183,8 +238,9 @@ export async function getById(id: number) {
       zip: true,
       city: true,
       state: true,
-      status: false,
-      deleted: true,
+      situation: true,
+      status: true,
+      deleted: false,
       isAdmin: true,
     },
   });
@@ -202,6 +258,10 @@ export async function updateUser(id: number, data: any) {
       email: true,
       password: false,
       cpf: true,
+      rg: true,
+      birthday: true,
+      spouse: true,
+      terrain: true,
       phone: true,
       work: true,
       address: true,
@@ -209,8 +269,9 @@ export async function updateUser(id: number, data: any) {
       zip: true,
       city: true,
       state: true,
+      situation: true,
       status: true,
-      deleted: true,
+      deleted: false,
       isAdmin: true,
     },
     data,
