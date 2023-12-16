@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import { getUser } from "../repositories/auth.repository";
 import { authValidation, tokenValidation } from "./../validations/auth.validation";
 
-export const auth = async (req: any, res: any) => {
+export async function auth(req: any, res: any) {
   try {
     const data = await authValidation.parse(req.body);
     const user = await getUser(data.email);
@@ -31,9 +31,9 @@ export const auth = async (req: any, res: any) => {
   } catch (error) {
     res.status(401).send(error);
   }
-};
+}
 
-export const validate = async (req: any, res: any) => {
+export async function validate(req: any, res: any) {
   try {
     const data = await tokenValidation.parse(req.body);
     const decode = await jwt.decode(data.token);
@@ -41,4 +41,4 @@ export const validate = async (req: any, res: any) => {
   } catch (error) {
     res.status(400).send(error);
   }
-};
+}

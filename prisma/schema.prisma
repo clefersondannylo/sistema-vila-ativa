@@ -12,19 +12,25 @@ datasource db {
 }
 
 model User {
-  id       Int      @id @default(autoincrement())
-  name     String
-  email    String   @unique
-  password String
-  phone    String?
-  work     String?
-  cpf      String?  @unique
-  address  String?
-  number   String?
-  city     String?
-  state    String?
-  cep      String?
-  status   Boolean? @default(true)
-  deleted  Boolean? @default(false)
-  isAdmin  Boolean? @default(false)
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  cpf       String?  @unique
+  rg        String?
+  birthday  String?
+  spouse    String?
+  phone     String?
+  work      String?
+  terrain   String?
+  address   String?
+  street    String?
+  number    String?
+  city      String?
+  state     String?
+  zip       String?
+  situation String?  @default("irregular")
+  status    Boolean? @default(true)
+  deleted   Boolean? @default(false)
+  isAdmin   Boolean? @default(false)
 }
